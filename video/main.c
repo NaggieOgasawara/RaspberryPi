@@ -36,13 +36,13 @@ void Init_Machine(void) {
 #define MAIL_FULL      0x80000000
 #define MAIL_EMPTY     0x40000000
 
-typedef signed char 	int8_t;
-typedef unsigned char 	uint8_t;
-typedef signed int 	int16_t;
-typedef unsigned int 	uint16_t;
-typedef signed long int 	int32_t;
-typedef unsigned long int 	uint32_t;
-typedef signed long long int 	int64_t;
+typedef signed char 	          int8_t;
+typedef unsigned char 	        uint8_t;
+typedef signed int 	            int16_t;
+typedef unsigned int 	          uint16_t;
+typedef signed long int 	      int32_t;
+typedef unsigned long int 	    uint32_t;
+typedef signed long long int 	  int64_t;
 typedef unsigned long long int 	uint64_t;
 
 void mailbox_write(uint8_t chan, uint32_t msg) {
@@ -76,6 +76,8 @@ __attribute__((aligned(16))) _fb_info_t {
     uint32_t buf_size;   //write 0 to get value
 } fb_info_t;
 
+static fb_info_t fb_info = {1920, 1080, 480, 270, 0, 16, 0, 0, 0, 0};
+
 void fb_init(fb_info_t *fb_info) {
     fb_info->buf_addr = 0;
     fb_info->buf_size = 0;
@@ -85,8 +87,6 @@ void fb_init(fb_info_t *fb_info) {
         mailbox_read(1);
     }
 }
-
-static fb_info_t fb_info = {1920, 1080, 480, 270, 0, 16, 0, 0, 0, 0};
 
 static inline void *coord2ptr(int x, int y) {
     return (void *) (fb_info.buf_addr                   \
@@ -117,7 +117,7 @@ void vline16(int x, int y, int l, uint32_t c) {
 
 int main(int argc, char **argv) {
     int i;
-    
+
     fb_init(&fb_info);
     for(i = 0; i < fb_info.h; i += 8) {
         hline16(0, i, fb_info.w, 0x5050 * i);

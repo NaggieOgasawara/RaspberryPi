@@ -1,0 +1,70 @@
+!SESSION 2020-01-13 22:00:09.077 -----------------------------------------------
+eclipse.buildId=4.14.0.I20191210-0610
+java.version=11.0.5
+java.vendor=Private Build
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=ja_JP
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.core.resources 4 77 2020-01-13 22:03:04.586
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2020-01-13 22:03:04.586
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2020-01-13 22:03:04.588
+!MESSAGE /home/naggie/dev/C/rpi/jtag_connector overlaps the workspace location: /home/naggie/dev/C/rpi/jtag_connector
+
+!ENTRY org.eclipse.core.resources 4 77 2020-01-13 22:04:00.977
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2020-01-13 22:04:00.977
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2020-01-13 22:04:00.978
+!MESSAGE /home/naggie/dev/C/rpi/jtag_connector overlaps the workspace location: /home/naggie/dev/C/rpi/jtag_connector
+
+!ENTRY org.eclipse.core.resources 4 77 2020-01-13 22:06:22.074
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2020-01-13 22:06:22.074
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2020-01-13 22:06:22.074
+!MESSAGE /home/naggie/dev/C/rpi/jtag_connector overlaps the workspace location: /home/naggie/dev/C/rpi/jtag_connector
+
+!ENTRY org.eclipse.core.resources 4 77 2020-01-13 22:09:33.356
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2020-01-13 22:09:33.356
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2020-01-13 22:09:33.357
+!MESSAGE /home/naggie/dev/C/rpi/jtag_connector overlaps the workspace location: /home/naggie/dev/C/rpi/jtag_connector
+!SESSION 2020-01-13 22:10:53.845 -----------------------------------------------
+eclipse.buildId=4.14.0.I20191210-0610
+java.version=11.0.5
+java.vendor=Private Build
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=ja_JP
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.core.resources 4 77 2020-01-13 22:12:30.112
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2020-01-13 22:12:30.113
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2020-01-13 22:12:30.113
+!MESSAGE /home/naggie/dev/C/rpi/jtag_connector overlaps the workspace location: /home/naggie/dev/C/rpi/jtag_connector
+!SESSION 2020-01-13 22:24:19.289 -----------------------------------------------
+eclipse.buildId=4.14.0.I20191210-0610
+java.version=11.0.5
+java.vendor=Private Build
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=ja_JP
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.core.resources 4 77 2020-01-13 22:26:16.089
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2020-01-13 22:26:16.089
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2020-01-13 22:26:16.089
+!MESSAGE /home/naggie/dev/C/rpi/jtag_connector overlaps the workspace location: /home/naggie/dev/C/rpi/jtag_connector
+
+!ENTRY org.eclipse.core.resources 4 77 2020-01-13 22:27:01.049
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2020-01-13 22:27:01.049
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2020-01-13 22:27:01.049
+!MESSAGE /home/naggie/dev/C/rpi/jtag_connector overlaps the workspace location: /home/naggie/dev/C/rpi/jtag_connector

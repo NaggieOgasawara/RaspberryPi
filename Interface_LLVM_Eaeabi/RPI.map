@@ -1,0 +1,282 @@
+
+Allocating common symbols
+Common symbol       size              file
+
+b                   0x1a6             pi.o
+timer               0x4               main.o
+c                   0x1a6             pi.o
+getChar0            0x4               main.o
+a                   0x1a6             pi.o
+txbuf               0x80              io.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+ram              0x0000000000008000 0x0000000000078000 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+
+.text           0x0000000000008000     0x1954
+ vector.o(.rodata.i)
+ .rodata.i      0x0000000000008000       0x20 vector.o
+                0x0000000000008000                instructionTable
+ vector.o(.rodata.v)
+ .rodata.v      0x0000000000008020       0x20 vector.o
+                0x0000000000008020                vectorTable
+ *(.text*)
+ .text          0x0000000000008040       0x14 vector.o
+                0x0000000000008040                undefinedInstruction
+                0x0000000000008044                softwareInterrupt
+                0x0000000000008048                prefetchAbort
+                0x000000000000804c                dataAbort
+                0x0000000000008050                fastInterrupt
+ .text          0x0000000000008054       0xe0 crt0.o
+                0x0000000000008054                start
+                0x000000000000807c                disableInterrupt
+                0x000000000000808c                enableInterrupt
+                0x000000000000809c                readVectorBaseRegister
+                0x00000000000080a4                writeVectorBaseRegister
+                0x00000000000080ac                setHighVector
+                0x00000000000080c0                setLowVector
+                0x00000000000080d4                readSCTLR
+                0x00000000000080dc                disableInstructionCache
+                0x00000000000080f4                disableDataCache
+                0x000000000000810c                disableMMU
+                0x0000000000008120                undefInst
+ .text          0x0000000000008134       0xc0 main.o
+                0x000000000000813c                initializeMemory
+                0x00000000000081a0                initializeARM
+                0x00000000000081c0                initializeHardware
+ .text.startup  0x00000000000081f4       0x74 main.o
+                0x00000000000081f4                main
+ .text          0x0000000000008268      0x6cc io.o
+                0x0000000000008268                getChar
+                0x0000000000008284                initializeJtagPin
+                0x00000000000082e0                initializeCPU
+                0x00000000000082e4                initializeI2C
+                0x00000000000082e8                initializeSPI
+                0x00000000000082ec                initializeBoardLED
+                0x0000000000008310                initializeGPIO
+                0x00000000000083b8                initializeUART0
+                0x000000000000845c                initializeTimer
+                0x0000000000008494                timerHandler
+                0x0000000000008500                reverseLED
+                0x0000000000008520                uart_lcr
+                0x0000000000008530                getChar1
+                0x0000000000008550                uart1Check
+                0x0000000000008564                putChar1
+                0x000000000000859c                uart1Flush
+                0x00000000000085b4                initializeUART1
+                0x0000000000008674                initializeUART
+                0x0000000000008678                putChar
+                0x00000000000086b0                uartHandler1
+                0x00000000000087ec                uartHandler0
+                0x000000000000886c                putChar0
+                0x0000000000008870                enQue
+                0x00000000000088d8                deQue
+                0x0000000000008924                adc
+                0x0000000000008928                gpio
+                0x0000000000008930                noOperation
+ .text          0x0000000000008934       0x60 interrupt.o
+                0x0000000000008934                interrupt
+ .text          0x0000000000008994      0x520 pi.o
+                0x0000000000008994                add
+                0x00000000000089dc                sub
+                0x0000000000008a2c                mul
+                0x0000000000008a64                div
+                0x0000000000008aec                print
+                0x0000000000008b70                e
+                0x0000000000008c24                pi
+                0x0000000000008ea4                pie
+ .text          0x0000000000008eb4      0xa38 printf.o
+                0x0000000000009370                tfp_format
+                0x000000000000984c                init_printf
+                0x0000000000009860                tfp_printf
+                0x00000000000098a0                tfp_sprintf
+ *(.rodata*)
+ .rodata.str1.4
+                0x00000000000098ec       0x55 main.o
+ *fill*         0x0000000000009941        0x3 
+ .rodata.str1.4
+                0x0000000000009944       0x10 pi.o
+                                         0x12 (size before relaxing)
+
+.glue_7         0x0000000000009954        0x0
+ .glue_7        0x0000000000009954        0x0 linker stubs
+
+.glue_7t        0x0000000000009954        0x0
+ .glue_7t       0x0000000000009954        0x0 linker stubs
+
+.vfp11_veneer   0x0000000000009954        0x0
+ .vfp11_veneer  0x0000000000009954        0x0 linker stubs
+
+.v4_bx          0x0000000000009954        0x0
+ .v4_bx         0x0000000000009954        0x0 linker stubs
+
+.iplt           0x0000000000009954        0x0
+ .iplt          0x0000000000009954        0x0 vector.o
+
+.rel.dyn        0x0000000000009954        0x0
+ .rel.iplt      0x0000000000009954        0x0 vector.o
+
+.ARM.exidx      0x0000000000000000        0x0
+                0x0000000000000000                __exidx_start = .
+ *(.ARM.exidx*)
+                0x0000000000000000                __exidx_end = .
+                0x0000000000000000                etext = .
+
+.data           0x0000000000009954        0x8 load address 0x0000000000000000
+                0x0000000000009954                sdata = .
+ *(.data)
+ .data          0x0000000000009954        0x0 vector.o
+ .data          0x0000000000009954        0x0 crt0.o
+ .data          0x0000000000009954        0x0 main.o
+ .data          0x0000000000009954        0x8 io.o
+                0x0000000000009954                inp
+                0x0000000000009958                outp
+ .data          0x000000000000995c        0x0 interrupt.o
+ .data          0x000000000000995c        0x0 pi.o
+ .data          0x000000000000995c        0x0 printf.o
+                0x000000000000995c                edata = .
+
+.igot.plt       0x000000000000995c        0x0 load address 0x0000000000000008
+ .igot.plt      0x000000000000995c        0x0 vector.o
+
+.bss            0x000000000000995c      0x592 load address 0x0000000000000008
+                0x000000000000995c                sbss = .
+ *(.bss)
+ .bss           0x000000000000995c        0x0 vector.o
+ .bss           0x000000000000995c        0x0 crt0.o
+ .bss           0x000000000000995c        0x4 main.o
+ .bss           0x0000000000009960        0x8 io.o
+ .bss           0x0000000000009968        0x0 interrupt.o
+ .bss           0x0000000000009968        0x0 pi.o
+ .bss           0x0000000000009968        0x8 printf.o
+ *(COMMON)
+ COMMON         0x0000000000009970        0x8 main.o
+                0x0000000000009970                timer
+                0x0000000000009974                getChar0
+ COMMON         0x0000000000009978       0x80 io.o
+                0x0000000000009978                txbuf
+ COMMON         0x00000000000099f8      0x4f6 pi.o
+                0x00000000000099f8                b
+                0x0000000000009ba0                c
+                0x0000000000009d48                a
+                0x0000000000009eee                ebss = .
+                0x000000000007e000                _interruptStack = ((ORIGIN (ram) + LENGTH (ram)) - 0x2000)
+                0x0000000000080000                _supervisorStack = (ORIGIN (ram) + LENGTH (ram))
+LOAD vector.o
+LOAD crt0.o
+LOAD main.o
+LOAD io.o
+LOAD interrupt.o
+LOAD pi.o
+LOAD printf.o
+OUTPUT(RPI.out elf32-littlearm)
+
+.debug_info     0x0000000000000000     0x24bc
+ .debug_info    0x0000000000000000       0xe3 vector.o
+ .debug_info    0x00000000000000e3       0x26 crt0.o
+ .debug_info    0x0000000000000109      0x365 main.o
+ .debug_info    0x000000000000046e      0xe10 io.o
+ .debug_info    0x000000000000127e      0x146 interrupt.o
+ .debug_info    0x00000000000013c4      0x74e pi.o
+ .debug_info    0x0000000000001b12      0x9aa printf.o
+
+.debug_abbrev   0x0000000000000000      0xc42
+ .debug_abbrev  0x0000000000000000       0x86 vector.o
+ .debug_abbrev  0x0000000000000086       0x14 crt0.o
+ .debug_abbrev  0x000000000000009a      0x19a main.o
+ .debug_abbrev  0x0000000000000234      0x3ca io.o
+ .debug_abbrev  0x00000000000005fe       0xb8 interrupt.o
+ .debug_abbrev  0x00000000000006b6      0x206 pi.o
+ .debug_abbrev  0x00000000000008bc      0x386 printf.o
+
+.debug_aranges  0x0000000000000000       0xe8
+ .debug_aranges
+                0x0000000000000000       0x20 vector.o
+ .debug_aranges
+                0x0000000000000020       0x20 crt0.o
+ .debug_aranges
+                0x0000000000000040       0x28 main.o
+ .debug_aranges
+                0x0000000000000068       0x20 io.o
+ .debug_aranges
+                0x0000000000000088       0x20 interrupt.o
+ .debug_aranges
+                0x00000000000000a8       0x20 pi.o
+ .debug_aranges
+                0x00000000000000c8       0x20 printf.o
+
+.debug_line     0x0000000000000000     0x17d7
+ .debug_line    0x0000000000000000       0x41 vector.o
+ .debug_line    0x0000000000000041       0x70 crt0.o
+ .debug_line    0x00000000000000b1       0xf9 main.o
+ .debug_line    0x00000000000001aa      0x773 io.o
+ .debug_line    0x000000000000091d       0xb1 interrupt.o
+ .debug_line    0x00000000000009ce      0x539 pi.o
+ .debug_line    0x0000000000000f07      0x8d0 printf.o
+
+.debug_str      0x0000000000000000      0x865
+ .debug_str     0x0000000000000000       0xf8 vector.o
+                                        0x10e (size before relaxing)
+ .debug_str     0x00000000000000f8       0x13 crt0.o
+                                         0x3c (size before relaxing)
+ .debug_str     0x000000000000010b      0x18c main.o
+                                        0x211 (size before relaxing)
+ .debug_str     0x0000000000000297      0x4c6 io.o
+                                        0x5ed (size before relaxing)
+ .debug_str     0x000000000000075d       0x16 interrupt.o
+                                        0x190 (size before relaxing)
+ .debug_str     0x0000000000000773       0x2c pi.o
+                                         0xcf (size before relaxing)
+ .debug_str     0x000000000000079f       0xc6 printf.o
+                                        0x1b8 (size before relaxing)
+
+.comment        0x0000000000000000       0x21
+ .comment       0x0000000000000000       0x21 vector.o
+                                         0x22 (size before relaxing)
+ .comment       0x0000000000000021       0x22 main.o
+ .comment       0x0000000000000021       0x22 io.o
+ .comment       0x0000000000000021       0x22 interrupt.o
+ .comment       0x0000000000000021       0x22 pi.o
+ .comment       0x0000000000000021       0x22 printf.o
+
+.ARM.attributes
+                0x0000000000000000       0x2d
+ .ARM.attributes
+                0x0000000000000000       0x2f vector.o
+ .ARM.attributes
+                0x000000000000002f       0x26 crt0.o
+ .ARM.attributes
+                0x0000000000000055       0x2f main.o
+ .ARM.attributes
+                0x0000000000000084       0x2f io.o
+ .ARM.attributes
+                0x00000000000000b3       0x2f interrupt.o
+ .ARM.attributes
+                0x00000000000000e2       0x2f pi.o
+ .ARM.attributes
+                0x0000000000000111       0x2f printf.o
+
+.debug_frame    0x0000000000000000      0x590
+ .debug_frame   0x0000000000000000       0x60 vector.o
+ .debug_frame   0x0000000000000060       0x80 main.o
+ .debug_frame   0x00000000000000e0      0x210 io.o
+ .debug_frame   0x00000000000002f0       0x30 interrupt.o
+ .debug_frame   0x0000000000000320      0x11c pi.o
+ .debug_frame   0x000000000000043c      0x154 printf.o
+
+.debug_loc      0x0000000000000000     0x169a
+ .debug_loc     0x0000000000000000       0x90 main.o
+ .debug_loc     0x0000000000000090      0x215 io.o
+ .debug_loc     0x00000000000002a5      0x669 pi.o
+ .debug_loc     0x000000000000090e      0xd8c printf.o
+
+.debug_ranges   0x0000000000000000      0x248
+ .debug_ranges  0x0000000000000000       0x30 main.o
+ .debug_ranges  0x0000000000000030       0xf8 io.o
+ .debug_ranges  0x0000000000000128       0x30 pi.o
+ .debug_ranges  0x0000000000000158       0xf0 printf.o

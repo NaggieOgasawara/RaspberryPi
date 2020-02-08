@@ -15,19 +15,22 @@ STARTUP= startup.o
 OBJS= main.o
 
 # systemcall
-OBJS += syscalls.o
+#OBJS += syscalls.o
 
 # RaspberryPi library
-OBJS+= rpi_lib/rpi_init.o
-OBJS+= rpi_lib/gpio/gpio.o
-OBJS+= rpi_lib/timer/timer.o
-OBJS+= rpi_lib/delay/delay.o
-OBJS+= rpi_lib/serial/serial.o
+#OBJS+= rpi_lib/rpi_init.o
+#OBJS+= rpi_lib/gpio/gpio.o
+#OBJS+= rpi_lib/timer/timer.o
+#OBJS+= rpi_lib/delay/delay.o
+#OBJS+= rpi_lib/serial/serial.o
 OBJS+= rpi_lib/video/video.o
-OBJS+= rpi_lib/bss/clearbss.o
+#OBJS+= rpi_lib/bss/clearbss.o
 
 CFLAGS= -mfloat-abi=soft -mlittle-endian
 CFLAGS+= -nostartfiles
+# add start
+CFLAGS+= -fno-builtin
+# add end
 CFLAGS+= -ffreestanding
 CFLAGS+= -O2
 # CFLAGS+= -marm -mcpu=arm1176jzf-s

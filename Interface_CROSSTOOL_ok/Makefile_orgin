@@ -1,0 +1,69 @@
+#************************************************************************/
+#*      GCC/LLCM ARM Baremetal Software / (C) Toshio MURAI  2012-2016   */
+#*      This is Free Software.   You can redistribute this software     */
+#*      and/or modify it ,under the terms of the GNU General Public     */
+#*      License version 3, or (at your option) any later version.       */
+#*      or under the terms of the BSD 3-Clause License.	(Dual Licence)  */
+#************************************************************************/
+CPU=arm1176jzf-s
+#	ARCH=armv6zk-a
+
+CPATH=/usr/local/bin/arm-eabi-
+CC=$(CPATH)gcc
+AS=$(CPATH)as
+LD=$(CPATH)ld
+OBJCOPY=$(CPATH)objcopy
+OBJECTS=vector.o crt0.o main.o io.o interrupt.o pi.o printf.o 
+#OBJECTS=vector.o crt0.o main.o io.o interrupt.o pi.o printf.o matrix.o fonts.o index.o
+MEMORYMAP=memory.x
+OBJECTNAME=RPI
+
+ifeq ($(CC), clang)
+	LIBGCC=/home/user/arm/lib/libcortexa
+else
+	LIBGCC=/usr/local/lib/gcc/arm-eabi/5.3.0/
+endif
+	LIBC=/usr/local/arm-eabi/lib
+
+ifeq ($(CC), clang)
+	CFLAGS= -target arm-eabi -fshort-enums
+else
+	CFLAGS=
+endif
+	CFLAGS+= -mcpu=$(CPU) -msoft-float -g -O2 -DRPI1
+	CFLAGS+= -I. -I.. -I/usr/local/include
+	ASFLAGS= -mcpu=$(CPU) --defsym JTAG=1 # -mfpu=neon
+
+#	CFLAGS= -mcpu=$(CPU) -mtune=$(CPU) -march=$(ARCH)	gcc
+#	CFLAGS= -target arm-eabi -mcpu=$(CPU) -mtune=$(CPU)	clang
+
+$(OBJECTNAME).out:  $(OBJECTS)
+	$(LD) -T $(MEMORYMAP) -Map $(OBJECTNAME).map $(OBJECTS) -L$(LIBGCC) -L$(LIBC) -lgcc -lc -o $(OBJECTNAME).out 
+	$(OBJCOPY) -O srec $(OBJECTNAME).out $(OBJECTNAME).srec
+	$(OBJCOPY) -O ihex $(OBJECTNAME).out $(OBJECTNAME).hex
+	$(OBJCOPY) -O binary $(OBJECTNAME).out $(OBJECTNAME).bin
+	$(OBJCOPY) -O binary $(OBJECTNAME).out kernel.img
+
+crt0.o	:	crt0.s
+	$(AS) $(ASFLAGS) -g  	$< -o	$@
+
+vector.o	:	vector.c
+	$(CC) $(CFLAGS) -c	$<	-o $@
+
+main.o	:	main.c io.h
+	$(CC) $(CFLAGS) -c	$<	-o $@
+
+printf.o	:	printf.c printf.h
+	$(CC) $(CFLAGS) -c	$<	-o $@
+
+pi.o	:	pi.c
+	$(CC) $(CFLAGS) -c	$<	-o $@
+
+io.o	:	io.c io.h
+	$(CC) $(CFLAGS) -c	$<	-o $@
+
+interrupt.o: interrupt.c
+	$(CC) $(CFLAGS) -c	$<	-o $@
+
+clean	:
+	rm -rf *.o $(OBJECTNAME).* kernel*.img
