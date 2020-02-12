@@ -1,0 +1,313 @@
+Archive member included to satisfy reference by file (symbol)
+
+/home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_udivsi3.o)
+                              printf.o (__aeabi_uidiv)
+/home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_dvmd_tls.o)
+                              /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_udivsi3.o) (__aeabi_idiv0)
+/home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_aeabi_uldivmod.o)
+                              printf.o (__aeabi_uldivmod)
+/home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_udivmoddi4.o)
+                              /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_aeabi_uldivmod.o) (__udivmoddi4)
+
+Allocating common symbols
+Common symbol       size              file
+
+b                   0x1a6             pi.o
+timer               0x4               main.o
+mbox                0x90              main.o
+c                   0x1a6             pi.o
+getChar0            0x4               main.o
+a                   0x1a6             pi.o
+txbuf               0x80              io.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+ram              0x0000000000008000 0x0000000000078000 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+
+.text           0x0000000000008000     0x209c
+ vector.o(.rodata.i)
+ .rodata.i      0x0000000000008000       0x20 vector.o
+                0x0000000000008000                instructionTable
+ vector.o(.rodata.v)
+ .rodata.v      0x0000000000008020       0x20 vector.o
+                0x0000000000008020                vectorTable
+ *(.text*)
+ .text          0x0000000000008040       0x14 vector.o
+                0x0000000000008040                undefinedInstruction
+                0x0000000000008044                softwareInterrupt
+                0x0000000000008048                prefetchAbort
+                0x000000000000804c                dataAbort
+                0x0000000000008050                fastInterrupt
+ .text          0x0000000000008054       0xe0 crt0.o
+                0x0000000000008054                start
+                0x000000000000807c                disableInterrupt
+                0x000000000000808c                enableInterrupt
+                0x000000000000809c                readVectorBaseRegister
+                0x00000000000080a4                writeVectorBaseRegister
+                0x00000000000080ac                setHighVector
+                0x00000000000080c0                setLowVector
+                0x00000000000080d4                readSCTLR
+                0x00000000000080dc                disableInstructionCache
+                0x00000000000080f4                disableDataCache
+                0x000000000000810c                disableMMU
+                0x0000000000008120                undefInst
+ .text          0x0000000000008134       0xc0 main.o
+                0x000000000000813c                initializeMemory
+                0x00000000000081a0                initializeARM
+                0x00000000000081c0                initializeHardware
+ .text.startup  0x00000000000081f4      0x30c main.o
+                0x00000000000081f4                main
+ .text          0x0000000000008500       0x60 interrupt.o
+                0x0000000000008500                interrupt
+ .text          0x0000000000008560      0x6cc io.o
+                0x0000000000008560                getChar
+                0x000000000000857c                initializeJtagPin
+                0x00000000000085d8                initializeCPU
+                0x00000000000085dc                initializeI2C
+                0x00000000000085e0                initializeSPI
+                0x00000000000085e4                initializeBoardLED
+                0x0000000000008608                initializeGPIO
+                0x00000000000086b0                initializeUART0
+                0x0000000000008754                initializeTimer
+                0x000000000000878c                timerHandler
+                0x00000000000087f8                reverseLED
+                0x0000000000008818                uart_lcr
+                0x0000000000008828                getChar1
+                0x0000000000008848                uart1Check
+                0x000000000000885c                putChar1
+                0x0000000000008894                uart1Flush
+                0x00000000000088ac                initializeUART1
+                0x000000000000896c                initializeUART
+                0x0000000000008970                putChar
+                0x00000000000089a8                uartHandler1
+                0x0000000000008ae4                uartHandler0
+                0x0000000000008b64                putChar0
+                0x0000000000008b68                enQue
+                0x0000000000008bd0                deQue
+                0x0000000000008c1c                adc
+                0x0000000000008c20                gpio
+                0x0000000000008c28                noOperation
+ .text          0x0000000000008c2c      0x520 pi.o
+                0x0000000000008c2c                add
+                0x0000000000008c74                sub
+                0x0000000000008cc4                mul
+                0x0000000000008cfc                div
+                0x0000000000008d84                print
+                0x0000000000008e08                e
+                0x0000000000008ebc                pi
+                0x000000000000913c                pie
+ .text          0x000000000000914c      0xa38 printf.o
+                0x0000000000009608                tfp_format
+                0x0000000000009ae4                init_printf
+                0x0000000000009af8                tfp_printf
+                0x0000000000009b38                tfp_sprintf
+ .text          0x0000000000009b84      0x250 video2.o
+                0x0000000000009b84                mbox_write
+                0x0000000000009bb4                mbox_read
+                0x0000000000009bfc                lfb_init
+                0x0000000000009d64                boxfill8
+ .text          0x0000000000009dd4       0xc8 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_udivsi3.o)
+                0x0000000000009dd4                __udivsi3
+                0x0000000000009dd4                __aeabi_uidiv
+                0x0000000000009e7c                __aeabi_uidivmod
+ .text          0x0000000000009e9c        0x4 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_dvmd_tls.o)
+                0x0000000000009e9c                __aeabi_ldiv0
+                0x0000000000009e9c                __aeabi_idiv0
+ .text          0x0000000000009ea0       0x3c /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_aeabi_uldivmod.o)
+                0x0000000000009ea0                __aeabi_uldivmod
+ .text          0x0000000000009edc      0x130 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_udivmoddi4.o)
+                0x0000000000009edc                __udivmoddi4
+ *(.rodata*)
+ .rodata        0x000000000000a00c       0x28 main.o
+ .rodata.str1.4
+                0x000000000000a034       0x55 main.o
+ *fill*         0x000000000000a089        0x3 
+ .rodata.str1.4
+                0x000000000000a08c       0x10 pi.o
+                                         0x12 (size before relaxing)
+
+.ARM.extab      0x000000000000a09c        0x0
+ .ARM.extab     0x000000000000a09c        0x0 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_udivmoddi4.o)
+
+.glue_7         0x000000000000a09c        0x0
+ .glue_7        0x000000000000a09c        0x0 linker stubs
+
+.glue_7t        0x000000000000a09c        0x0
+ .glue_7t       0x000000000000a09c        0x0 linker stubs
+
+.vfp11_veneer   0x000000000000a09c        0x0
+ .vfp11_veneer  0x000000000000a09c        0x0 linker stubs
+
+.v4_bx          0x000000000000a09c        0x0
+ .v4_bx         0x000000000000a09c        0x0 linker stubs
+
+.iplt           0x000000000000a09c        0x0
+ .iplt          0x000000000000a09c        0x0 vector.o
+
+.ARM.exidx      0x000000000000a09c        0x8
+                0x000000000000a09c                __exidx_start = .
+ *(.ARM.exidx*)
+ .ARM.exidx     0x000000000000a09c        0x8 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_udivmoddi4.o)
+                0x000000000000a0a4                __exidx_end = .
+                0x000000000000a0a4                etext = .
+
+.rel.dyn        0x000000000000a0a4        0x0
+ .rel.iplt      0x000000000000a0a4        0x0 vector.o
+
+.data           0x000000000000a0a4        0x8
+                0x000000000000a0a4                sdata = .
+ *(.data)
+ .data          0x000000000000a0a4        0x0 vector.o
+ .data          0x000000000000a0a4        0x0 crt0.o
+ .data          0x000000000000a0a4        0x0 main.o
+ .data          0x000000000000a0a4        0x0 interrupt.o
+ .data          0x000000000000a0a4        0x8 io.o
+                0x000000000000a0a4                inp
+                0x000000000000a0a8                outp
+ .data          0x000000000000a0ac        0x0 pi.o
+ .data          0x000000000000a0ac        0x0 printf.o
+ .data          0x000000000000a0ac        0x0 video2.o
+ .data          0x000000000000a0ac        0x0 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_udivsi3.o)
+ .data          0x000000000000a0ac        0x0 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_dvmd_tls.o)
+ .data          0x000000000000a0ac        0x0 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_aeabi_uldivmod.o)
+ .data          0x000000000000a0ac        0x0 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_udivmoddi4.o)
+                0x000000000000a0ac                edata = .
+
+.igot.plt       0x000000000000a0ac        0x0
+ .igot.plt      0x000000000000a0ac        0x0 vector.o
+
+.bss            0x000000000000a0b0      0x63a
+                0x000000000000a0b0                sbss = .
+ *(.bss)
+ .bss           0x000000000000a0b0        0x0 vector.o
+ .bss           0x000000000000a0b0        0x0 crt0.o
+ .bss           0x000000000000a0b0        0x4 main.o
+ .bss           0x000000000000a0b4        0x0 interrupt.o
+ .bss           0x000000000000a0b4        0x8 io.o
+ .bss           0x000000000000a0bc        0x0 pi.o
+ .bss           0x000000000000a0bc        0x8 printf.o
+ .bss           0x000000000000a0c4        0x0 video2.o
+ .bss           0x000000000000a0c4        0x0 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_udivsi3.o)
+ .bss           0x000000000000a0c4        0x0 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_dvmd_tls.o)
+ .bss           0x000000000000a0c4        0x0 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_aeabi_uldivmod.o)
+ .bss           0x000000000000a0c4        0x0 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_udivmoddi4.o)
+ *(COMMON)
+ *fill*         0x000000000000a0c4        0xc 
+ COMMON         0x000000000000a0d0       0xa4 main.o
+                0x000000000000a0d0                timer
+                0x000000000000a0e0                mbox
+                0x000000000000a170                getChar0
+ COMMON         0x000000000000a174       0x80 io.o
+                0x000000000000a174                txbuf
+ COMMON         0x000000000000a1f4      0x4f6 pi.o
+                0x000000000000a1f4                b
+                0x000000000000a39c                c
+                0x000000000000a544                a
+                0x000000000000a6ea                ebss = .
+                0x000000000007e000                _interruptStack = ((ORIGIN (ram) + LENGTH (ram)) - 0x2000)
+                0x0000000000080000                _supervisorStack = (ORIGIN (ram) + LENGTH (ram))
+LOAD crt0.o
+LOAD main.o
+LOAD interrupt.o
+LOAD io.o
+LOAD pi.o
+LOAD printf.o
+LOAD vector.o
+LOAD video2.o
+LOAD /home/naggie/cross/rpi/arm-unknown-eabi/arm-unknown-eabi/lib//libc.a
+LOAD /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a
+OUTPUT(rpi-micon.elf elf32-littlearm)
+
+.comment        0x0000000000000000       0x21
+ .comment       0x0000000000000000       0x21 vector.o
+                                         0x22 (size before relaxing)
+ .comment       0x0000000000000021       0x22 main.o
+ .comment       0x0000000000000021       0x22 interrupt.o
+ .comment       0x0000000000000021       0x22 io.o
+ .comment       0x0000000000000021       0x22 pi.o
+ .comment       0x0000000000000021       0x22 printf.o
+ .comment       0x0000000000000021       0x22 video2.o
+ .comment       0x0000000000000021       0x22 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_udivmoddi4.o)
+
+.ARM.attributes
+                0x0000000000000000       0x2f
+ .ARM.attributes
+                0x0000000000000000       0x2f vector.o
+ .ARM.attributes
+                0x000000000000002f       0x26 crt0.o
+ .ARM.attributes
+                0x0000000000000055       0x2f main.o
+ .ARM.attributes
+                0x0000000000000084       0x2f interrupt.o
+ .ARM.attributes
+                0x00000000000000b3       0x2f io.o
+ .ARM.attributes
+                0x00000000000000e2       0x2f pi.o
+ .ARM.attributes
+                0x0000000000000111       0x2f printf.o
+ .ARM.attributes
+                0x0000000000000140       0x2f video2.o
+ .ARM.attributes
+                0x000000000000016f       0x21 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_udivsi3.o)
+ .ARM.attributes
+                0x0000000000000190       0x21 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_dvmd_tls.o)
+ .ARM.attributes
+                0x00000000000001b1       0x21 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_aeabi_uldivmod.o)
+ .ARM.attributes
+                0x00000000000001d2       0x2f /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_udivmoddi4.o)
+
+.debug_line     0x0000000000000000      0x602
+ .debug_line    0x0000000000000000       0x70 crt0.o
+ .debug_line    0x0000000000000070       0xab /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_udivsi3.o)
+ .debug_line    0x000000000000011b       0x8f /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_dvmd_tls.o)
+ .debug_line    0x00000000000001aa       0x8f /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_aeabi_uldivmod.o)
+ .debug_line    0x0000000000000239      0x3c9 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_udivmoddi4.o)
+
+.debug_info     0x0000000000000000     0x148a
+ .debug_info    0x0000000000000000       0x26 crt0.o
+ .debug_info    0x0000000000000026       0x26 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_udivsi3.o)
+ .debug_info    0x000000000000004c       0x26 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_dvmd_tls.o)
+ .debug_info    0x0000000000000072       0x26 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_aeabi_uldivmod.o)
+ .debug_info    0x0000000000000098     0x13f2 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_udivmoddi4.o)
+
+.debug_abbrev   0x0000000000000000      0x2a2
+ .debug_abbrev  0x0000000000000000       0x14 crt0.o
+ .debug_abbrev  0x0000000000000014       0x14 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_udivsi3.o)
+ .debug_abbrev  0x0000000000000028       0x14 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_dvmd_tls.o)
+ .debug_abbrev  0x000000000000003c       0x14 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_aeabi_uldivmod.o)
+ .debug_abbrev  0x0000000000000050      0x252 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_udivmoddi4.o)
+
+.debug_aranges  0x0000000000000000       0xa0
+ .debug_aranges
+                0x0000000000000000       0x20 crt0.o
+ .debug_aranges
+                0x0000000000000020       0x20 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_udivsi3.o)
+ .debug_aranges
+                0x0000000000000040       0x20 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_dvmd_tls.o)
+ .debug_aranges
+                0x0000000000000060       0x20 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_aeabi_uldivmod.o)
+ .debug_aranges
+                0x0000000000000080       0x20 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_udivmoddi4.o)
+
+.debug_str      0x0000000000000000     0x1944
+ .debug_str     0x0000000000000000       0x41 crt0.o
+ .debug_str     0x0000000000000041       0xc9 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_udivsi3.o)
+                                         0xd5 (size before relaxing)
+ .debug_str     0x000000000000010a       0xd5 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_dvmd_tls.o)
+ .debug_str     0x000000000000010a       0x5b /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_aeabi_uldivmod.o)
+                                         0xd1 (size before relaxing)
+ .debug_str     0x0000000000000165     0x17df /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_udivmoddi4.o)
+                                       0x18b4 (size before relaxing)
+
+.debug_frame    0x0000000000000000       0x80
+ .debug_frame   0x0000000000000000       0x20 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_udivsi3.o)
+ .debug_frame   0x0000000000000020       0x2c /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_aeabi_uldivmod.o)
+ .debug_frame   0x000000000000004c       0x34 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_udivmoddi4.o)
+
+.debug_loc      0x0000000000000000      0x312
+ .debug_loc     0x0000000000000000      0x312 /home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0//libgcc.a(_udivmoddi4.o)
