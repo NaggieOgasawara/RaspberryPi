@@ -15,12 +15,17 @@ OBJDUMP= $(CROSS)objdump
 SIZE= $(CROSS)size
 READELF= $(CROSS)readelf
 
+# RaspberryPi library path
+# RPIPATH= ../Interface_CROSSTOOL_COMMON/
+
+# INC= -I$(RPIPATH)
+
 # libgcc.a
 LIBS = -L/home/naggie/cross/rpi/arm-unknown-eabi/lib/gcc/arm-unknown-eabi/8.3.0/
 # newlib
 LIBS += -L/home/naggie/cross/rpi/arm-unknown-eabi/arm-unknown-eabi/lib/
-STARTUP= crt0.o
-MEMORYMAP= memory.x
+STARTUP= $(RPIPATH)crt0.o
+MEMORYMAP= $(RPIPATH)memory.x
 OBJS= main.o
 
 # RaspberryPi library
@@ -29,7 +34,7 @@ OBJS+= io.o
 OBJS+= pi.o
 OBJS+= printf.o
 OBJS+= vector.o
-OBJS+= video2.o
+OBJS+= video.o
 
 #AFLAGS= -mcpu=arm1176jzf-s --defsym JTAG=1 -g
 AFLAGS= -mcpu=arm1176jzf-s --defsym JTAG=0 -g
@@ -67,7 +72,7 @@ $(OBJECT).elf:	$(STARTUP) $(OBJS)
 	$(AS) $(AFLAGS) -c $< -o $@
 
 clean::
-	$(RM) -f *.o *.img *.elf */*.o */*/*.o
+	$(RM) -f *.o *.img *.elf
 	$(RM) -f tags *~
 
 tags::

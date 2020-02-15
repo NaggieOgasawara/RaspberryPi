@@ -7,7 +7,7 @@
 /************************************************************************/
 
 #include "printf.h"
-#include "video2.h"
+#include "video.h"
 
 void	disableInterrupt(void);
 void	enableInterrupt(void);
@@ -69,6 +69,8 @@ int	main( )
 	boxfill8(vram, COL8_848484, pitch, bpp, x - 47, y - 23, x - 47, y -  4);
 	boxfill8(vram, COL8_FFFFFF, pitch, bpp, x - 47, y -  3, x -  4, y -  3);
 	boxfill8(vram, COL8_FFFFFF, pitch, bpp, x -  3, y - 24, x -  3, y -  3);
+
+	line(vram, COL8_FFFFFF, pitch, bpp, 100, 100, 1000, 600);
 
 	printf("\nWelcome to ARM Common Software (%s %s).\n", __DATE__ , __TIME__);
 

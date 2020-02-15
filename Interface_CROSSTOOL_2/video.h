@@ -1,53 +1,82 @@
 #ifndef RPILIB_VIDEO_H
 #define RPILIB_VIDEO_H
 #include <stdint.h>
-/*
-typedef signed char 	          int8_t;
-typedef unsigned char 	        uint8_t;
-typedef signed int 	          int16_t;
-typedef unsigned int 	        uint16_t;
-typedef signed long int 	      int32_t;
-typedef unsigned long int 	    uint32_t;
-typedef signed long long int 	  int64_t;
-typedef unsigned long long int 	uint64_t;
-*/
-#define IOREG(X)  (*(volatile uint32_t *) (X))
+// for RaspberryPi
+#define MMIO_BASE       0x20000000
+// for raspberryPi3
+//#define MMIO_BASE       0x3F000000
 
-#define MAILBOX0_FIFO   IOREG(0x2000B880)
-#define MAILBOX0_POLL   IOREG(0x2000B890)
-#define MAILBOX0_SENDER IOREG(0x2000B894)
-#define MAILBOX0_STATUS IOREG(0x2000B898)
-#define MAILBOX0_CONFIG IOREG(0x2000B89C)
-#define MAILBOX1_FIFO   IOREG(0x2000B8A0)
-#define MAILBOX1_POLL   IOREG(0x2000B8B0)
-#define MAILBOX1_SENDER IOREG(0x2000B8B4)
-#define MAILBOX1_STATUS IOREG(0x2000B8B8)
-#define MAILBOX1_CONFIG IOREG(0x2000B8BC)
+// Memory Mapped I/O
+#define IOREG(X)  (*(volatile unsigned int *) (X))
 
-#define MAIL_FULL      0x80000000
-#define MAIL_EMPTY     0x40000000
+/* メールボックスメッセージバッファ */
+volatile unsigned int  __attribute__((aligned(16))) mbox[36];
 
-typedef volatile struct                                          \
-__attribute__((aligned(16))) _fb_info_t {
-    uint32_t display_w;  //write display width
-    uint32_t display_h;  //write display height
-    uint32_t w;          //write framebuffer width
-    uint32_t h;          //write framebuffer height
-    uint32_t row_bytes;  //write 0 to get value
-    uint32_t bpp;        //write bits per pixel
-    uint32_t ofs_x;      //write x offset of framebuffer
-    uint32_t ofs_y;      //write y offset of framebuffer
-    uint32_t buf_addr;   //write 0 to get value
-    uint32_t buf_size;   //write 0 to get value
+#define VIDEOCORE_MBOX  (MMIO_BASE+0x0000B880)
+#define MBOX_READ       IOREG(VIDEOCORE_MBOX + 0x00)
+#define MBOX_POLL       IOREG(VIDEOCORE_MBOX + 0x10)
+#define MBOX_SENDER     IOREG(VIDEOCORE_MBOX + 0x14)
+#define MBOX_STATUS     IOREG(VIDEOCORE_MBOX + 0x18)
+#define MBOX_CONFIG     IOREG(VIDEOCORE_MBOX + 0x1C)
+#define MBOX_WRITE      IOREG(VIDEOCORE_MBOX + 0x20)
+
+#define MBOX_RESPONSE   0x80000000
+#define MBOX_FULL       0x80000000
+#define MBOX_EMPTY      0x40000000
+
+#define MBOX_REQUEST    0
+
+/* channels */
+#define MBOX_CH_PROP    8
+
+/* tags */
+#define MBOX_TAG_LAST   0
+
+typedef struct _fb_info_t {
+    unsigned int  display_w;  // ディスプレイの幅
+    unsigned int  display_h;  // ディスプレイの高さ
+    unsigned int  w;          // フレームバッファの幅
+    unsigned int  h;          // フレームバッファの高さ
+    unsigned int  row_bytes;  // 0を書き込んで値を取得する
+    unsigned int  bpp;        // 1ピクセルあたりのビット数
+    unsigned int  ofs_x;      // フレームバッファのxオフセット
+    unsigned int  ofs_y;      // フレームバッファのyオフセット
+    unsigned char *buf_addr;  // フレームバッファへのポインタ
+    unsigned int  buf_size;   // フレームバッファのサイズ（バイト単位）
 } fb_info_t;
 
-//static fb_info_t fb_info = {1920, 1080, 480, 270, 0, 16, 0, 0, 0, 0};
+#define COL8_000000 (((0x00>>3)<<11) + ((0x00>>3)<<6) + (0x00>>3))
+#define COL8_008484 (((0x00>>3)<<11) + ((0x84>>3)<<6) + (0x84>>3))
+#define COL8_848484 (((0x84>>3)<<11) + ((0x84>>3)<<6) + (0x84>>3))
+#define COL8_C6C6C6 (((0xC6>>3)<<11) + ((0xC6>>3)<<6) + (0xC6>>3))
+#define COL8_FFFFFF (((0xFF>>3)<<11) + ((0xFF>>3)<<6) + (0xFF>>3))
 
-// void mailbox_write(uint8_t chan, uint32_t msg);
-// uint32_t mailbox_read(uint8_t chan);
-void fb_init( void );
-void drawGrid( void );
-// void hline16( int x, int y, int l, uint32_t c);
-// void vline16( int x, int y, int l, uint32_t c);
+void mbox_write(unsigned char ch);
+int mbox_read(unsigned char ch);
+void lfb_init(fb_info_t *fb_info);
+static inline void *coord2ptr(unsigned char *vram,
+                              unsigned int pitch,
+                              unsigned int bpp,
+                              int x,
+                              int y);
+void boxfill8(unsigned char *vram,
+              unsigned int c,
+              unsigned int pitch,
+              unsigned int bpp,
+              int x0, int y0, int x1, int y1);
+
+void line(unsigned char *vram,
+              unsigned int c,
+              unsigned int pitch,
+              unsigned int bpp,
+      int sx, int sy, int ex, int ey );
+
+void plot(unsigned char *vram,
+              unsigned int c,
+              unsigned int pitch,
+              unsigned int bpp,
+              int x,
+              int y);
+
 
 #endif

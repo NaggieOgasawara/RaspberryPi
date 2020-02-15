@@ -1,1 +1,63 @@
 /.metadata/
+#
+# -- Bearmetal_Base
+#
+Bearmetal_Base/*.o
+Bearmetal_Base/rpi-micon.disas
+Bearmetal_Base/rpi-micon.elf
+Bearmetal_Base/rpi-micon.img
+Bearmetal_Base/rpi-micon.readelf
+Bearmetal_Base/rpi-micon.size
+Bearmetal_Base/rpi_lib/rpi_init.o
+Bearmetal_Base/rpi_lib/bss/clearbss.o
+Bearmetal_Base/rpi_lib/delay/delay.o
+Bearmetal_Base/rpi_lib/gpio/gpio.o
+Bearmetal_Base/rpi_lib/serial/serial.o
+Bearmetal_Base/rpi_lib/timer/timer.o
+#
+# -- Bearmetal_Video
+#
+Bearmetal_Video/*.o
+Bearmetal_Video/rpi-micon.disas
+Bearmetal_Video/rpi-micon.elf
+Bearmetal_Video/rpi-micon.img
+Bearmetal_Video/rpi-micon.readelf
+Bearmetal_Video/rpi-micon.size
+Bearmetal_Video/rpi_lib/bss/clearbss.o
+#
+# -- Bearmetal_Video_2
+#
+#
+# -- Bearmetal_Video_3
+#
+#
+# -- Bearmetal_Video_4
+#
+#
+# -- Bearmetal_Video_5
+#
+#
+# -- Interface_CROSSTOOL_2
+#
+Interface_CROSSTOOL_2/*.
+Interface_CROSSTOOL_2/*.disas
+Interface_CROSSTOOL_2/*.elf
+Interface_CROSSTOOL_2/*.img
+Interface_CROSSTOOL_2/*.map
+Interface_CROSSTOOL_2/*.readelf
+Interface_CROSSTOOL_2/*.size
+#
+# -- Interface_CROSSTOOL_ok
+#
+#
+# -- jtag_connector2
+#
+#
+# -- printfTest_Helloworld
+#
+#
+# -- video
+#
+#
+# -- video_mod
+#
